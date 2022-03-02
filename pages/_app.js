@@ -1,14 +1,18 @@
-import Footer from '../components/footer';
-import Header from '../components/Header';
+import { useEffect } from 'react';
+import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
   return (
-    <>
-      <Header />
+    <Layout>
       <Component {...pageProps} />
-      <Footer />
-    </>
+    </Layout>
   );
 }
 
